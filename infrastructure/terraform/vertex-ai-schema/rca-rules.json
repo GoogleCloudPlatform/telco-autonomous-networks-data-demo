@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "dynamic": "true",
+  "properties": {
+    "description": {
+      "type": "string",
+      "keyPropertyMapping": "description",
+      "retrievable": true
+    },
+    "kpi_missed": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "keyPropertyMapping": "category"
+      }
+    },
+    "processing_rule": {
+      "type": "string",
+      "indexable": true,
+      "retrievable": true,
+      "dynamicFacetable": true,
+      "searchable": true
+    },
+    "processing_rule_tools": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "retrievable": true,
+        "searchable": true
+      }
+    },
+    "severity_determination_rule": {
+      "type": "string",
+      "indexable": true,
+      "retrievable": true,
+      "dynamicFacetable": true,
+      "searchable": true
+    },
+    "severity_determination_rule_tools": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "retrievable": true,
+        "searchable": true
+      }
+    },
+    "vendor": {
+      "type": "string",
+      "indexable": true,
+      "retrievable": true,
+      "dynamicFacetable": true,
+      "searchable": true
+    },
+    "author": {
+      "type": "string",
+      "indexable": true,
+      "retrievable": true,
+      "dynamicFacetable": true,
+      "searchable": true
+    },
+    "creation_date": {
+      "type": "datetime",
+      "indexable": true,
+      "retrievable": true
+    },
+    "is_current": {
+      "type": "boolean",
+      "indexable": true,
+      "retrievable": true
+    }
+  }
+}

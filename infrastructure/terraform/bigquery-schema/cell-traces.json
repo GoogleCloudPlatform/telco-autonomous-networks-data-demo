@@ -1,0 +1,412 @@
+[
+  {
+    "name": "procedure_type",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "starttime",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "endtime",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "imsi",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "imeisv",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "msisdn",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "start_enodeb_id",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "start_cell_id",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "start_mme",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "end_enodeb_id",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "end_cell_id",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "end_mme",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "gummei",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "bearer_id",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "qci",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "pdcp_bitrate_dl",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "pdcp_volume_dl",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "pdcp_bitrate_ul",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "pdcp_volume_ul",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "sgw_bytes_sent_dl",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "sgw_pkts_sent_dl",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "sgw_bytes_recvd_ul",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "sgw_pkts_recvd_ul",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "rrc_conn_setup_timestamp_start",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "rrc_conn_setup_rrc_result",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "rrc_conn_setup_rrc_establ_cause",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "rrc_conn_setup_duration",
+    "type": "FLOAT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "s1_sig_conn_setup_timestamp_start",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "s1_sig_conn_setup_sig_conn_result",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "s1_sig_conn_setup_rrc_establ_cause",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "s1_sig_conn_setup_duration",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "initial_ctxt_setup_timestamp_start",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "initial_ctxt_setup_initial_ctxt_result",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "initial_ctxt_setup_erab_result_array",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "initial_ctxt_setup_duration",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "initial_ctxt_setup_erab_qci_array",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "initial_ctxt_setup_3gpp_cause_group",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "initial_ctxt_setup_3gpp_cause",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "ue_capability_timestamp",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "ue_capability_cap_category",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "erab_setup_timestamp_start",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "erab_setup_erab_result_array",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "erab_setup_erab_qci_array",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "erab_setup_duration",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "rrc_conn_reestablish_timestamp_start",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "rrc_conn_reestablish_reestab_result",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "rrc_conn_reestablish_duration",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "rrc_conn_reestablish_reestab_cause",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "erabrelease_starttime",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "erabrelease_release_result",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "erabrelease_duration",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "erabrelease_s1_release_cause",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "erabrelease_internal_release_cause",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "erabrelease_erab_req_qci_array",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "erabrelease_erab_req_3gpp_cause_group_array",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "erabrelease_erab_req_3gpp_cause_array",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "enb_uectxtrelease_starttime",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "enb_uectxtrelease_duration",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "enb_uectxtrelease_triggering_node",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "enb_uectxtrelease_ue_release_cause",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "enb_uectxtrelease_internal_release_cause",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "enb_uectxtrelease_3gpp_cause_group",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "enb_uectxtrelease_3gpp_cause",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "enb_uectxtrelease_erab_release_req_qci_array",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uemeasment_sample_meastime",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uemeasment_sample_power_headroom",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uemeasment_sample_power_headroom_prb_used",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uemeasment_sample_last_pusch_num_prb",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uemeasment_sample_last_pusch_sinr",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uemeasment_sample_last_pusch_power_per_prb",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uetrafficrep_sample_meastime",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uetrafficrep_sample_thp_pdcpvol_trunk_dl",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uetrafficrep_sample_thp_time_dl",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uetrafficrep_sample_thp_pdcpvol_trunk_ul",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uetrafficrep_sample_thp_time_ul",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uerbtrafficrep_sample_meastime",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uerbtrafficrep_sample_bearer_id",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uerbtrafficrep_sample_erab_id",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uerbtrafficrep_sample_bearer_type",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uerbtrafficrep_sample_drb_pdcp_ackvol_dl",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uerbtrafficrep_sample_drb_pdcp_transvol_dl",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uerbtrafficrep_sample_drb_pdcp_recvol_ul",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  }
+]

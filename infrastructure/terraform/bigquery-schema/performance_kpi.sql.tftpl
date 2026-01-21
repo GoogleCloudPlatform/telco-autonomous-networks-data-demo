@@ -1,0 +1,32 @@
+SELECT
+  enodeb_id, cell_id, measurement_end,
+    (
+    ERAB_EstabInitSuccNbr_QCI1+
+    ERAB_EstabInitSuccNbr_QCI2+
+    ERAB_EstabInitSuccNbr_QCI3+
+    ERAB_EstabInitSuccNbr_QCI4+
+    ERAB_EstabInitSuccNbr_QCI5+
+    ERAB_EstabInitSuccNbr_QCI6+
+    ERAB_EstabInitSuccNbr_QCI7+
+    ERAB_EstabInitSuccNbr_QCI8+
+    ERAB_EstabInitSuccNbr_QCI9)  * 100./(
+    ERAB_EstabInitAttNbr_QCI1+
+    ERAB_EstabInitAttNbr_QCI2+
+    ERAB_EstabInitAttNbr_QCI3+
+    ERAB_EstabInitAttNbr_QCI4+
+    ERAB_EstabInitAttNbr_QCI5+
+    ERAB_EstabInitAttNbr_QCI6+
+    ERAB_EstabInitAttNbr_QCI7+
+    ERAB_EstabInitAttNbr_QCI8+
+    ERAB_EstabInitAttNbr_QCI9) as erab_success_rate,
+    (
+    ERAB_RelActNbr_QCI1+
+    ERAB_RelActNbr_QCI2+
+    ERAB_RelActNbr_QCI3+
+    ERAB_RelActNbr_QCI4+
+    ERAB_RelActNbr_QCI5+
+    ERAB_RelActNbr_QCI6+
+    ERAB_RelActNbr_QCI7+
+    ERAB_RelActNbr_QCI8+
+    ERAB_RelActNbr_QCI9)/ERAB_SessionTimeUE * 3600 as retainability
+FROM `${base_table}`

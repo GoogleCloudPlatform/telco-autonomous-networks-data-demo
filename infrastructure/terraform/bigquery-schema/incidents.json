@@ -1,0 +1,96 @@
+[
+  {
+    "mode": "REQUIRED",
+    "name": "incident_id",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "start_ts",
+    "type": "TIMESTAMP"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "end_ts",
+    "type": "TIMESTAMP"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "status",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "description",
+    "type": "STRING"
+  },
+  {
+    "mode": "REPEATED",
+    "name": "kpi_missed",
+    "type": "RECORD",
+    "description": "KPI(s) which is out of range which caused the incident",
+    "fields": [
+      {
+        "name": "kpi",
+        "mode": "REQUIRED",
+        "type": "STRING"
+      },
+      {
+        "name": "value",
+        "mode": "REQUIRED",
+        "type": "FLOAT64"
+      }
+    ]
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "enodeb_id",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cell_id",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "severity",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "preliminary_analysis",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "final_analysis",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "events",
+    "type": "STRING"
+  },
+  {
+    "mode": "REPEATED",
+    "name": "events_embeddings",
+    "type": "FLOAT64"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "cause",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "resolution",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "created_ts",
+    "type": "TIMESTAMP",
+    "defaultValueExpression": "CURRENT_TIMESTAMP()"
+  }
+]

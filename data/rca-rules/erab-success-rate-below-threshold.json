@@ -1,0 +1,14 @@
+{
+  "description": "eRAB success rate below threshold",
+  "kpi_missed": [
+    "erab_success_rate"
+  ],
+  "processing_rule": "Check if the cell traces for the enodeb and cell which mised the KPI indicate security failures. If a sufficient percentage of those failures are related to the failed security setup - mention that as a possible cause and provide details of the percentages. Suggest further analysis of the individual phones which failed the security setup.",
+  "processing_rule_tools": ["get_cell_trace_statistics"],
+  "severity_determination_rule": "If the eRAB success rate is below 95% rate the incident as high severity, otherwise it's a low severity incident",
+  "severity_determination_rule_tools": [],
+  "vendor": "Acme Telco Appliances",
+  "author": "Jack Smith (smith@example.com), Jane Lee (lee@example.com)",
+  "creation_date": "2025-12-26 08:30:00 UTC",
+  "is_current": true
+}

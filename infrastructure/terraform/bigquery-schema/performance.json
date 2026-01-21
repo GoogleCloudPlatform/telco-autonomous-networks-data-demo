@@ -1,0 +1,401 @@
+[
+  {
+    "mode": "REQUIRED",
+    "name": "enodeb_id",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "cell_id",
+    "type": "string"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "measurement_end",
+    "type": "TIMESTAMP"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnEstabAtt",
+    "type": "INT64",
+    "description": "The number of RRC connection establishment attempts"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnEstabAtt_Em",
+    "type": "INT64",
+    "description": "The total number of RRC Connection Request attempts with establishment cause emergency"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnEstabAtt_Hpa",
+    "type": "INT64",
+    "description": "The total number of RRC Connection Request attempts with establishment cause highPriorityAccess"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnEstabAtt_Mod",
+    "type": "INT64",
+    "description": "The total number of RRC Connection Request attempts with Establishment cause Mobile Originating Data"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnEstabAtt_Mos",
+    "type": "INT64",
+    "description": "The total number of RRC Connection Request attempts with Establishment cause Mobile Originating Signaling"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnEstabAtt_Mta",
+    "type": "INT64",
+    "description": "The total number of RRC Connection Request attempts with Establishment cause Mobile Terminating Access"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnReEstabAtt",
+    "type": "INT64",
+    "description": "The total number of RRC Connection Request attempts that are considered as re-attempts"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnReEstabAtt_Dta",
+    "type": "INT64",
+    "description": "The total number of RRC Connection Request attempts that are considered as re-attempts for Establishment Cause Delay Tolerant Access"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnReEstabAtt_Em",
+    "type": "INT64",
+    "description": "The total number of RRC Connection Request attempts that are considered as re-attempts for Establishment cause Emergency"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnReEstabAtt_Hpa",
+    "type": "INT64",
+    "description": "The total number of RRC Connection Request attempts that are considered as re-attempts for Establishment cause High Priority Access"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnReEstabAtt_Mod",
+    "type": "INT64",
+    "description": "The total number of RRC Connection Request attempts that are considered as re-attempts for Establishment cause Mobile Originating Data"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnReEstabAtt_Mos",
+    "type": "INT64",
+    "description": "The total number of RRC Connection Request attempts that are considered as re-attempts for Establishment cause Mobile Originating Signaling"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnReEstabAtt_Mta",
+    "type": "INT64",
+    "description": "The total number of RRC Connection Request attempts that are considered as re-attempts for Establishment cause Mobile Terminating Access"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnEstabSucc",
+    "type": "INT64",
+    "description": "The total number of successful RRC Connection Establishments"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnEstabSucc_Em",
+    "type": "INT64",
+    "description": "The total number of successful RRC Connection Establishments for Establishment cause Emergency"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnEstabSucc_Hpa",
+    "type": "INT64",
+    "description": "The total number of successful RRC Connection Establishments for Establishment cause High Priority"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnEstabSucc_Mod",
+    "type": "INT64",
+    "description": "The total number of successful RRC Connection Establishments for Establishment cause Mobile Originating Data"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnEstabSucc_Mos",
+    "type": "INT64",
+    "description": "The total number of successful RRC Connection Establishments for Establishment cause Mobile Originating Signaling"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnEstabSucc_Mta",
+    "type": "INT64",
+    "description": "The total number of successful RRC Connection Establishments for Establishment cause Mobile Terminating Access"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "RRC_ConnMax",
+    "type": "INT64",
+    "description": "Peak number of UE in RRC_CONNECTED mode"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "S1SIG_ConnEstabAtt",
+    "type": "INT64",
+    "description": "This measurement provides the number of S1 Signalling connection establishment attempts for any establishment cause"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "S1SIG_ConnEstabAtt_Em",
+    "type": "INT64",
+    "description": "This measurement provides the number of S1 Signalling connection establishment attempts with RRC Connection Request Establishment cause Emergency"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "S1SIG_ConnEstabAtt_Hpa",
+    "type": "INT64",
+    "description": "This measurement provides the number of S1 Signalling connection establishment attempts with RRC Connection Request Establishment cause High Priority Access"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "S1SIG_ConnEstabAtt_Mod",
+    "type": "INT64",
+    "description": "This measurement provides the number of S1 Signalling connection establishment attempts with RRC Connection Request Establishment cause Mobile Originating Data"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "S1SIG_ConnEstabAtt_Mos",
+    "type": "INT64",
+    "description": "This measurement provides the number of S1 Signalling connection establishment attempts with RRC Connection Request Establishment cause Mobile Originating Signalling"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "S1SIG_ConnEstabAtt_Mta",
+    "type": "INT64",
+    "description": "This measurement provides the number of S1 Signalling connection establishment attempts with RRC Connection Request Establishment cause Mobile Terminating Access"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "S1SIG_ConnEstabSucc",
+    "type": "INT64",
+    "description": "The total number of successful S1 signalling connection establishments"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "S1SIG_ConnEstabSucc_Em",
+    "type": "INT64",
+    "description": "The total number of successful S1 signalling connection establishments with Establishment cause Emergency"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "S1SIG_ConnEstabSucc_Hpa",
+    "type": "INT64",
+    "description": "The total number of successful S1 signalling connection establishments with Establishment cause High Priority Access"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "S1SIG_ConnEstabSucc_Mod",
+    "type": "INT64",
+    "description": "The total number of successful S1 signalling connection establishments with Establishment cause Mobile Originating Data"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "S1SIG_ConnEstabSucc_Mos",
+    "type": "INT64",
+    "description": "The total number of successful S1 signalling connection establishments with Establishment cause Mobile Originating Signalling"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "S1SIG_ConnEstabSucc_Mta",
+    "type": "INT64",
+    "description": "The total number of successful S1 signalling connection establishments with Establishment cause Mobile Terminating Access"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitAttNbr_QCI1",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs attempted to setup."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitAttNbr_QCI2",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs attempted to setup."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitAttNbr_QCI3",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs attempted to setup."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitAttNbr_QCI4",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs attempted to setup."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitAttNbr_QCI5",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs attempted to setup."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitAttNbr_QCI6",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs attempted to setup."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitAttNbr_QCI7",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs attempted to setup."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitAttNbr_QCI8",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs attempted to setup."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitAttNbr_QCI9",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs attempted to setup."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitSuccNbr_QCI1",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs successfully established."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitSuccNbr_QCI2",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs successfully established."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitSuccNbr_QCI3",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs successfully established."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitSuccNbr_QCI4",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs successfully established."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitSuccNbr_QCI5",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs successfully established."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitSuccNbr_QCI6",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs successfully established."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitSuccNbr_QCI7",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs successfully established."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitSuccNbr_QCI8",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs successfully established."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabInitSuccNbr_QCI9",
+    "type": "INT64",
+    "description": "This measurement provides the number of initial E-RABs successfully established."
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabAddAttNbr_QCI",
+    "type": "STRING",
+    "description": "This measurement provides the number of additional E-RABs attempted to setup. The measurement is split into subcounters per E-RAB QoS level (QCI)"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_EstabAddSuccNbr_QCI",
+    "type": "STRING",
+    "description": "This measurement provides the number of additional E-RABs successfully established. The measurement is split into subcounters per E-RAB QoS level (QCI)"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_SessionTimeQCI_QCI",
+    "type": "STRING",
+    "description": "This measurement provides the aggregated active session time for UEs in a cell"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_RelActNbr_QCI1",
+    "type": "INT64",
+    "description": "This measurement provides the number of released E-RABs that were active at the time of release"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_RelActNbr_QCI2",
+    "type": "INT64",
+    "description": "This measurement provides the number of released E-RABs that were active at the time of release"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_RelActNbr_QCI3",
+    "type": "INT64",
+    "description": "This measurement provides the number of released E-RABs that were active at the time of release"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_RelActNbr_QCI4",
+    "type": "INT64",
+    "description": "This measurement provides the number of released E-RABs that were active at the time of release"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_RelActNbr_QCI5",
+    "type": "INT64",
+    "description": "This measurement provides the number of released E-RABs that were active at the time of release"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_RelActNbr_QCI6",
+    "type": "INT64",
+    "description": "This measurement provides the number of released E-RABs that were active at the time of release"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_RelActNbr_QCI7",
+    "type": "INT64",
+    "description": "This measurement provides the number of released E-RABs that were active at the time of release"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_RelActNbr_QCI8",
+    "type": "INT64",
+    "description": "This measurement provides the number of released E-RABs that were active at the time of release"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_RelActNbr_QCI9",
+    "type": "INT64",
+    "description": "This measurement provides the number of released E-RABs that were active at the time of release"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ERAB_SessionTimeUE",
+    "type": "INT64",
+    "description": "This measurement provides the aggregated active session time for UEs in a cell"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "UL_RSSI",
+    "type": "INT64",
+    "description": "TODO: get the definition"
+  }
+]
