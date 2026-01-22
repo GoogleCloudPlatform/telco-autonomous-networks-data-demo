@@ -73,6 +73,7 @@ project:
 
 * BigQuery dataset `telco_demo`. This dataset contains three tables:
     * `performance` - LTE performance data
+    * `performance_kpi` - materialized view of the `performance` table with several calculated KPIs.
     * `cell_traces` - Cell trace data
     * `incidents` - Incident details
 
@@ -92,7 +93,7 @@ bin/load-cell-traces-data.sh
 Run this script to populate the Vertex AI Search with RCA rules:
 
 ```shell
-bin/load-rca-rules.sh
+bin/add-rca-rules.sh
 ```
 
 ## Set up the Python environment
