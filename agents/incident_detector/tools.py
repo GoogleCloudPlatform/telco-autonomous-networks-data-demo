@@ -77,7 +77,7 @@ SELECT
 )
 SELECT 
     enodeb_id, cell_id, 
-    'E-Rab success rate is below 97%' as description,
+    'ERAB success rate is below 97%' as description,
     kpi, kpi_value,
     ARRAY_FIRST(period) as started, 
     ARRAY_LAST(period) as ended 

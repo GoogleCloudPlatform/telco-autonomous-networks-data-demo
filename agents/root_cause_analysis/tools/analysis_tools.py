@@ -79,6 +79,16 @@ async def get_cell_trace_statistics(tool_context: ToolContext) -> list[
 
     return {'status': 'Success', 'cell_trace_statistics': result}
 
+async def get_uplink_signal(tool_context: ToolContext, erab_id: str, cell_id: str) -> dict:
+    """
+    Get the signal strength of the uplink signal for a particular cell
+    """
+
+    return {"status": "success", "uplink_signal_strenght": "-100"}
+
+async def get_uplink_configuration(tool_context: ToolContext, erab_id: str, cell_id: str) -> dict:
+
+    return {"status": "success", "pZeroNominalPucch": "-110", "pZeroNominalPusch": "-94"}
 
 async def get_uplink_configuration(tool_context: ToolContext) -> list[
     CellTracesStats]:
@@ -99,7 +109,9 @@ async def get_uplink_configuration(tool_context: ToolContext) -> list[
 
 available_tools: list[FunctionTool] = [
     FunctionTool(func=get_cell_trace_statistics),
-    FunctionTool(func=get_uplink_configuration)]
+    FunctionTool(func=get_uplink_configuration),
+    FunctionTool(func=get_uplink_signal),
+]
 
 
 class AnalysisToolset(BaseToolset):
