@@ -90,27 +90,14 @@ async def get_uplink_configuration(tool_context: ToolContext, erab_id: str, cell
 
     return {"status": "success", "pZeroNominalPucch": "-110", "pZeroNominalPusch": "-94"}
 
-async def get_uplink_configuration(tool_context: ToolContext) -> list[
-    CellTracesStats]:
-    """
-    Get the cell trace statistics for the current incident.
-
-    This tool doesn't need the details of the incident to passed as parameter.
-
-    :param tool_context:
-    :return:
-    """
-
-    # TODO: provide implementation
-    result = {
-        'foo': 'bar'
-    }
-    return {'status': 'Success', 'uplink_configuration': result}
+async def initiate_uplink_configuration_adjustement(tool_context: ToolContext, erab_id: str, cell_id: str) -> dict:
+    return {"status": "success", "details": "Uplink adjustment request has been issued. It can take up to an hour for the changes to take the effect."}
 
 available_tools: list[FunctionTool] = [
     FunctionTool(func=get_cell_trace_statistics),
     FunctionTool(func=get_uplink_configuration),
     FunctionTool(func=get_uplink_signal),
+    FunctionTool(func=initiate_uplink_configuration_adjustement),
 ]
 
 
