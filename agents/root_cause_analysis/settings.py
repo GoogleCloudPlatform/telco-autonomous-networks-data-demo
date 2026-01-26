@@ -26,6 +26,7 @@ class AgentSettings(BaseSettings):
     report_generator_model: Optional[str] = None
     instruction_generator_model: Optional[str] = None
     analyzer_model: Optional[str] = None
+    root_agent_model: Optional[str] = None
     default_model: str = 'gemini-3-pro-preview'
     show_thoughts: bool = True
 
@@ -77,6 +78,8 @@ class AgentSettings(BaseSettings):
             self.instruction_generator_model = self.default_model
         if not self.analyzer_model:
             self.analyzer_model = self.default_model
+        if not self.root_agent_model:
+            self.root_agent_model = self.default_model
 
         return self
 

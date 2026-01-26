@@ -66,13 +66,16 @@ async def find_rca_rules(missed_kpis: list[MissedKPI]) -> list[Rules]:
     project_id = settings.project_id
     engine_id = settings.vertex_ai_search_engine_rca_rules
 
-    search_query = " OR ".join(
-        ['category=' + missed_kpi.kpi for missed_kpi in missed_kpis])
+    filter = ('kpi_missed: ANY(' +
+              ",".join(
+                  ['"' + missed_kpi.kpi + '"' for missed_kpi in missed_kpis])
+              + ')')
 
     client_options = (
         ClientOptions(api_endpoint=f"{location}-discoveryengine.googleapis.com")
         if location != "global"
         else None
+
     )
 
     # Create a client
@@ -87,14 +90,15 @@ async def find_rca_rules(missed_kpis: list[MissedKPI]) -> list[Rules]:
     # https://cloud.google.com/python/docs/reference/discoveryengine/latest/google.cloud.discoveryengine_v1.types.SearchRequest
     request = discoveryengine.SearchRequest(
         serving_config=serving_config,
-        query=search_query,
+        query="",  # in this demo we only use the filters to get the list of rules.
         page_size=10,
         query_expansion_spec=discoveryengine.SearchRequest.QueryExpansionSpec(
             condition=discoveryengine.SearchRequest.QueryExpansionSpec.Condition.AUTO,
         ),
         spell_correction_spec=discoveryengine.SearchRequest.SpellCorrectionSpec(
             mode=discoveryengine.SearchRequest.SpellCorrectionSpec.Mode.AUTO
-        )
+        ),
+        filter=filter
     )
 
     result: list[Rules] = []

@@ -32,14 +32,18 @@ from google.genai.types import ThinkingConfig, GenerateContentConfig
 
 from root_cause_analysis.constants import KEY_SEVERITY_DETERMINATION_RULES, \
     KEY_SEVERITY_LEVEL, KEY_INCIDENT_INFO, \
-    KEY_SEVERITY_DETERMINATION_RULES_TOOLS
+    KEY_SEVERITY_DETERMINATION_RULES_TOOLS, KEY_SEVERITY_EXPLANATION
 from root_cause_analysis.settings import settings
 from root_cause_analysis.tools.analysis_tools import AnalysisToolset
 
 # TODO: use this agent similar to the primary analysis agent.
-async def update_severity_level(tool_context: ToolContext,
-    severity: str) -> dict:
+async def update_severity_level(
+    tool_context: ToolContext,
+    severity: str,
+    explanation: str) -> dict:
     tool_context.state[KEY_SEVERITY_LEVEL] = severity
+    tool_context.state[KEY_SEVERITY_EXPLANATION] = explanation
+    tool_context.actions.transfer_to_agent = settings.root_agent_name
 
     return {'status': 'success'}
 
@@ -65,9 +69,7 @@ def build_severity_classifier_agent():
         
         The severity must be only HIGH, MEDIUM, or LOW.
         
-        You must call the update_severity_level tool with the value of the severity.
-        
-        Reply with the brief explanation why you selected this severity.
+        You must call the update_severity_level tool with the value of the severity and the explanation of how you determined that severity.
         """,
         tools=[severity_determination_rule_toolset, update_severity_level],
         generate_content_config=GenerateContentConfig(

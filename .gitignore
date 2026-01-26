@@ -18,3 +18,4 @@
 /agents/incident_detector/.env
 
 /**/__pycache__
+/agents/.venv/

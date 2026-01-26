@@ -65,23 +65,49 @@ async def get_potential_incidents(tool_context: ToolContext) -> dict:
         # It assumes that the data points of KPIs dropping below the threshold are contiguous in time.
         # It's possible that there are multiple drop/back-to-normal jumps, etc.
         query = f"""
-WITH missed_kpis AS (
+WITH kpi_metadata as (
+  SELECT kpi, description FROM UNNEST([
+    STRUCT('erab_success_rate' as kpi, 'ERAB success rate is below 97%' as description),
+    STRUCT('retainability' as kpi, 'Retainability is above 3' as description)
+  ])
+),
+missed_kpis AS (
 SELECT 
     enodeb_id, 
-    cell_id, 
-    'erab_success_rate' as kpi, 
-    ARRAY_AGG(measurement_end ORDER BY measurement_end) AS period,
-    AVG(erab_success_rate) as kpi_value
-  FROM `{performance_kpi_table}` WHERE erab_success_rate < 97
-  GROUP BY enodeb_id, cell_id
+    cell_id,
+    measurement_end,
+    kpi_metadata.kpi as kpi,
+    CASE
+      WHEN kpi_metadata.kpi = 'erab_success_rate' THEN 
+        erab_success_rate
+      WHEN kpi_metadata.kpi = 'retainability' THEN 
+        retainability
+    END AS kpi_value, 
+  FROM `{performance_kpi_table}`, kpi_metadata 
+  WHERE CASE 
+    WHEN kpi_metadata.kpi = 'erab_success_rate' THEN erab_success_rate < 97
+    WHEN kpi_metadata.kpi = 'retainability' THEN retainability > 3
+    END
+),
+aggregated_kpis AS (
+  SELECT
+   enodeb_id, 
+   cell_id, 
+   kpi,
+   MIN(measurement_end) as started,
+   MAX(measurement_end) as ended,
+   AVG(kpi_value) as kpi_value,
+  FROM missed_kpis
+  GROUP BY enodeb_id, cell_id, kpi
 )
 SELECT 
     enodeb_id, cell_id, 
-    'E-Rab success rate is below 97%' as description,
-    kpi, kpi_value,
-    ARRAY_FIRST(period) as started, 
-    ARRAY_LAST(period) as ended 
-    FROM missed_kpis
+    kpi_metadata.description,
+    aggregated_kpis.kpi,  
+    kpi_value,
+    started, ended 
+    FROM aggregated_kpis, kpi_metadata
+    WHERE aggregated_kpis.kpi = kpi_metadata.kpi
 """
         logger.info("About to check for incidents: %s", query)
         rows = bigquery_client.query_and_wait(

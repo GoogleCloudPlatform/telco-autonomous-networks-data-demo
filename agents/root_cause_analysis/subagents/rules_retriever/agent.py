@@ -11,11 +11,11 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
+from typing import AsyncGenerator, override
+
 from google.adk.agents import BaseAgent, InvocationContext
 from google.adk.events import Event, EventActions
 from google.genai.types import Content, Part
-from typing import AsyncGenerator, override
-
 from root_cause_analysis.constants import KEY_INCIDENT_INFO, \
     KEY_PROCESSING_RULES, KEY_SEVERITY_DETERMINATION_RULES, \
     KEY_PROCESSING_RULES_TOOLS, KEY_SEVERITY_DETERMINATION_RULES_TOOLS
@@ -61,10 +61,12 @@ class ProcessingRulesRetrieverAgent(BaseAgent):
         state_changes = {
             KEY_PROCESSING_RULES: processing_rules,
             # Sets are not serializable. Convert to list
-            KEY_PROCESSING_RULES_TOOLS: [tool for tool in processing_rule_tools],
+            KEY_PROCESSING_RULES_TOOLS: [tool for tool in
+                                         processing_rule_tools],
             KEY_SEVERITY_DETERMINATION_RULES: severity_determination_rules,
             # Sets are not serializable. Convert to list
-            KEY_SEVERITY_DETERMINATION_RULES_TOOLS: [tool for tool in severity_determination_rule_tools]
+            KEY_SEVERITY_DETERMINATION_RULES_TOOLS: [tool for tool in
+                                                     severity_determination_rule_tools]
         }
         event_actions: EventActions = EventActions(state_delta=state_changes)
 
@@ -73,7 +75,8 @@ class ProcessingRulesRetrieverAgent(BaseAgent):
             author=self.name,
             content=Content(
                 parts=[Part.from_text(
-                    text="Successfully retrieved processing rules.")]
+                    text="Successfully retrieved processing rules."
+                    if processing_rules else "Couldn't find incident specific rules.")]
             ),
             invocation_id=ctx.invocation_id,
             branch=ctx.branch,

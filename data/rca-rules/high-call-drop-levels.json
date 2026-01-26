@@ -1,0 +1,14 @@
+{
+  "description": "High call drop levels",
+  "kpi_missed": [
+    "retainability"
+  ],
+  "processing_rule": "Check the uplink (UL) RSSI level of the cell.  If the UL RSSI level is outside of the normal boundaries of -120 and -114, check the uplink configuration and see if the pZeroNominalPucch value is close to the optimal -114 and pZeroNominalPusch is close to the optimal -100 values. Consider adjusting these configurations if they differ from the optimal by more than 5%.",
+  "processing_rule_tools": ["get_uplink_rssi_level","get_uplink_configuration", "initiate_uplink_configuration_adjustement"],
+  "severity_determination_rule": "If retainability level is greater than 3.5  it is a high severity case. If the uplink (UL) RSSI lovel is lower than -120 the incident is of a medium severity. If the UL RSSI level above -105 it is a high severity case. Any other values mean that this is a low severity incident.",
+  "severity_determination_rule_tools": ["get_uplink_rssi_level"],
+  "vendor": "Acme Telco Appliances",
+  "author": "Acme Telco Appliances",
+  "creation_date": "2025-12-26 08:30:00 UTC",
+  "is_current": true
+}
