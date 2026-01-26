@@ -17,6 +17,7 @@ KEY_INCIDENT_DATA = 'incident_data'
 KEY_INSTRUCTIONS = 'instructions'
 KEY_ANALYSIS = 'analysis'
 KEY_SEVERITY_LEVEL = 'severity_level'
+KEY_SEVERITY_EXPLANATION = 'severity_level_explanation'
 
 KEY_EXTERNAL_SEARCH_GROUNDING = 'external_search_grounding'
 KEY_EXTERNAL_SEARCH_RESULTS = 'external_search_results'

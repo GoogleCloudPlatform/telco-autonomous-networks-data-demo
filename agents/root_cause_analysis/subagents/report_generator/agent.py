@@ -16,7 +16,8 @@ from google.adk import Agent
 
 from root_cause_analysis.constants import KEY_INCIDENT_INFO, \
     KEY_EXTERNAL_SEARCH_RESULTS, KEY_INTERNAL_SEARCH_RESULTS, \
-    KEY_PRIOR_INCIDENTS, KEY_ANALYSIS, KEY_SEVERITY_LEVEL
+    KEY_PRIOR_INCIDENTS, KEY_ANALYSIS, KEY_SEVERITY_LEVEL, \
+    KEY_SEVERITY_EXPLANATION
 from root_cause_analysis.settings import settings
 
 
@@ -37,7 +38,10 @@ Only use the information below to generate the report.
 {{{KEY_ANALYSIS}}}
 
 *Severity:*
-{{{KEY_SEVERITY_LEVEL}}}
+{{{KEY_SEVERITY_LEVEL}}}. 
+
+*Why this severity was chosen:*
+{{{KEY_SEVERITY_EXPLANATION}}}
 
 *External documentation:*: 
 {{{KEY_EXTERNAL_SEARCH_RESULTS}?}}

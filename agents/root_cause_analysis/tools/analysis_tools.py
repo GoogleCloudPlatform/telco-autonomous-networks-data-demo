@@ -79,24 +79,24 @@ async def get_cell_trace_statistics(tool_context: ToolContext) -> list[
 
     return {'status': 'Success', 'cell_trace_statistics': result}
 
-async def get_uplink_signal(tool_context: ToolContext, erab_id: str, cell_id: str) -> dict:
+async def get_uplink_rssi_level(tool_context: ToolContext, enodeb_id: str, cell_id: str) -> dict:
     """
     Get the signal strength of the uplink signal for a particular cell
     """
 
     return {"status": "success", "uplink_signal_strenght": "-100"}
 
-async def get_uplink_configuration(tool_context: ToolContext, erab_id: str, cell_id: str) -> dict:
+async def get_uplink_configuration(tool_context: ToolContext, enodeb_id: str, cell_id: str) -> dict:
 
     return {"status": "success", "pZeroNominalPucch": "-110", "pZeroNominalPusch": "-94"}
 
-async def initiate_uplink_configuration_adjustement(tool_context: ToolContext, erab_id: str, cell_id: str) -> dict:
+async def initiate_uplink_configuration_adjustement(tool_context: ToolContext, enodeb_id: str, cell_id: str) -> dict:
     return {"status": "success", "details": "Uplink adjustment request has been issued. It can take up to an hour for the changes to take the effect."}
 
 available_tools: list[FunctionTool] = [
     FunctionTool(func=get_cell_trace_statistics),
     FunctionTool(func=get_uplink_configuration),
-    FunctionTool(func=get_uplink_signal),
+    FunctionTool(func=get_uplink_rssi_level),
     FunctionTool(func=initiate_uplink_configuration_adjustement),
 ]
 

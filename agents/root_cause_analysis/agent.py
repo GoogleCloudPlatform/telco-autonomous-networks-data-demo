@@ -59,8 +59,7 @@ how_to_proceed_before_each_step = \
 
 root_agent = Agent(
     model=Gemini(
-        # TODO: add dedicated model
-        model=settings.default_model
+        model=settings.root_agent_model
     ),
     name=settings.root_agent_name,
     description="Root cause analysis agent",
@@ -82,12 +81,11 @@ root_agent = Agent(
     
     {how_to_proceed_before_each_step}
     """,
-    sub_agents=[analyzer],
+    sub_agents=[analyzer, severity_classifier],
     tools=[
         get_incident_info,
         AgentTool(agent=rules_retriever),
         AgentTool(agent=instruction_generator),
-        AgentTool(agent=severity_classifier),
         AgentTool(agent=external_documentation_retriever_agent),
         AgentTool(agent=internal_documentation_retriever_agent),
         AgentTool(agent=prior_incidents_search_agent),
@@ -98,16 +96,14 @@ root_agent = Agent(
             include_thoughts=settings.show_thoughts))
 )
 
-bq_logging_plugin = BigQueryAgentAnalyticsPlugin(
-    project_id=settings.agent_data_log_project_id,
-    dataset_id=settings.agent_data_log_dataset,
-    table_id=settings.agent_data_log_table
-)
+# bq_logging_plugin = BigQueryAgentAnalyticsPlugin(
+#     project_id=settings.agent_data_log_project_id,
+#     dataset_id=settings.agent_data_log_dataset,
+#     table_id=settings.agent_data_log_table
+# )
 
 app = App(
     name="root_cause_analysis",
     root_agent=root_agent,
-    # TODO: there is a bug with the plugin - it doesn't work with custom agents.
-    # Uncomment once fixed.
     # plugins=[bq_logging_plugin]
 )
