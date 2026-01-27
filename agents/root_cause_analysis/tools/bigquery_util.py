@@ -36,6 +36,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 from datetime import datetime, UTC
+
 from google.cloud import bigquery
 from google.cloud.bigquery import QueryJobConfig
 from google.cloud.bigquery.enums import JobCreationMode

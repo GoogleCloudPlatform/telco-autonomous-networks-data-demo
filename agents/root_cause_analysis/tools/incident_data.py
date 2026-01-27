@@ -13,6 +13,7 @@
 #  limitations under the License.
 
 import logging
+
 from google.adk.tools import ToolContext
 
 from incident_detector.models import Incident

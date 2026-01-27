@@ -26,12 +26,11 @@
 
 from google.adk import Agent
 from google.adk.models import Gemini
-from google.adk.planners import BuiltInPlanner
 from google.adk.tools import ToolContext
-from google.genai.types import ThinkingConfig, GenerateContentConfig
 
 from root_cause_analysis.constants import KEY_INSTRUCTIONS, \
-    KEY_ANALYSIS, KEY_PROCESSING_RULES_TOOLS
+    KEY_ANALYSIS, KEY_PROCESSING_RULES_TOOLS, KEY_ACTIONS
+from root_cause_analysis.models import Action
 from root_cause_analysis.settings import settings
 from root_cause_analysis.tools.analysis_tools import AnalysisToolset
 
@@ -44,6 +43,22 @@ async def save_analysis(tool_context: ToolContext, analysis: str):
     tool_context.actions.transfer_to_agent = settings.root_agent_name
 
 
+async def add_action(tool_context: ToolContext, tool_name: str,
+    parameters: dict, reason_to_perform: str) -> dict:
+    actions: list[Action] = [Action.model_validate(action_dict) for action_dict
+                             in
+                             tool_context.state.get(KEY_ACTIONS, [])]
+
+    actions.append(
+        Action(tool_name=tool_name, reason_to_perform=reason_to_perform,
+               parameters=parameters))
+
+    tool_context.state[KEY_ACTIONS] = [action.model_dump_json() for action in
+                                       actions]
+
+    return {"status": "successfully added the action"}
+
+
 def build_analyzer_agent():
     return Agent(
         model=Gemini(
@@ -53,14 +68,12 @@ def build_analyzer_agent():
         instruction=f"""
         {{{KEY_INSTRUCTIONS}}}
         
-        Once you successfully complete the analysis, save it using the save_analysis tool.
+        If there are any automated actions that can be taken, add them one by one using the add_action tool. Don't call these tools.
+        
+        Once you add all the action and successfully complete the analysis then save it using the save_analysis tool.
         """,
-        tools=[processing_rules_toolset, save_analysis],
-        generate_content_config=GenerateContentConfig(
-            labels={"agent": "rca"},
-        ),
+        tools=[processing_rules_toolset, save_analysis, add_action],
+        generate_content_config=settings.content_config,
         output_key=KEY_ANALYSIS,
-        planner=BuiltInPlanner(
-            thinking_config=ThinkingConfig(
-                include_thoughts=settings.show_thoughts))
+        planner=settings.planner
     )

@@ -26,15 +26,14 @@
 
 from google.adk import Agent
 from google.adk.models import Gemini
-from google.adk.planners import BuiltInPlanner
 from google.adk.tools import ToolContext
-from google.genai.types import ThinkingConfig, GenerateContentConfig
 
 from root_cause_analysis.constants import KEY_SEVERITY_DETERMINATION_RULES, \
     KEY_SEVERITY_LEVEL, KEY_INCIDENT_INFO, \
     KEY_SEVERITY_DETERMINATION_RULES_TOOLS, KEY_SEVERITY_EXPLANATION
 from root_cause_analysis.settings import settings
 from root_cause_analysis.tools.analysis_tools import AnalysisToolset
+
 
 # TODO: use this agent similar to the primary analysis agent.
 async def update_severity_level(
@@ -72,10 +71,6 @@ def build_severity_classifier_agent():
         You must call the update_severity_level tool with the value of the severity and the explanation of how you determined that severity.
         """,
         tools=[severity_determination_rule_toolset, update_severity_level],
-        generate_content_config=GenerateContentConfig(
-            labels={"agent": "rca"},
-        ),
-        planner=BuiltInPlanner(
-            thinking_config=ThinkingConfig(
-                include_thoughts=settings.show_thoughts))
+        planner=settings.planner,
+        generate_content_config=settings.content_config
     )

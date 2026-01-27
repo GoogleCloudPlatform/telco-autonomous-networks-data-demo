@@ -13,10 +13,11 @@
 #  limitations under the License.
 
 import logging
+from typing import Optional
+
 from google import genai
 from google.genai.types import EmbedContentConfig, EmbedContentResponse, \
     HttpOptions
-from typing import Optional
 
 from root_cause_analysis.settings import settings
 
