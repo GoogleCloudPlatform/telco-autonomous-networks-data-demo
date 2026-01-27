@@ -13,8 +13,9 @@
 #  limitations under the License.
 import logging
 from datetime import datetime
-from google.adk.tools import ToolContext
 from typing import Optional
+
+from google.adk.tools import ToolContext
 
 from root_cause_analysis.constants import KEY_INCIDENT_INFO
 from root_cause_analysis.models import Incident, MissedKPI

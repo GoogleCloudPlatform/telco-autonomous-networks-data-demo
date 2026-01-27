@@ -11,11 +11,11 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
-from typing import Optional
-
 import logging
 import uuid
 from datetime import datetime, UTC
+from typing import Optional
+
 from google.adk.tools import ToolContext
 from google.api_core.client_info import ClientInfo
 from google.cloud import bigquery
@@ -153,14 +153,15 @@ async def create_new_incident(tool_context: ToolContext,
                                  incident_dict in
                                  tool_context.state[INCIDENTS_ATTR]]
     for next_incident in incidents:
-        next_incident:Incident
+        next_incident: Incident
         if next_incident.id == incident_id:
             incident = next_incident
             break
 
     if not incident:
         logger.error("Unable to find incident by id %s ", incident_id)
-        return {'status': "Failed", 'reason': 'Unable to find incident by provided id'}
+        return {'status': "Failed",
+                'reason': 'Unable to find incident by provided id'}
 
     try:
         incidents_table = f"{settings.bigquery_data_project_id}.{settings.bigquery_dataset}.{settings.bigquery_table_incidents}"

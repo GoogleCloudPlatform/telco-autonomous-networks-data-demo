@@ -12,12 +12,13 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+from typing import Optional
+
 from google.adk import Agent
 from google.adk.agents.callback_context import CallbackContext
 from google.adk.models import LlmResponse, Gemini
 from google.adk.tools import url_context
 from google.genai.types import Part, Content
-from typing import Optional
 
 from root_cause_analysis.constants import KEY_EXTERNAL_SEARCH_GROUNDING, \
     KEY_EXTERNAL_SEARCH_RESULTS, KEY_INCIDENT_INFO
@@ -88,5 +89,7 @@ def build_external_documentation_retriever():
         ''',
         tools=[url_context],
         after_model_callback=[extract_grounding_metadata,
-                              assert_search_is_grounded]
+                              assert_search_is_grounded],
+        planner=settings.planner,
+        generate_content_config=settings.content_config
     )

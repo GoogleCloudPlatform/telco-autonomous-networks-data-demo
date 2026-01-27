@@ -90,7 +90,8 @@ async def find_rca_rules(missed_kpis: list[MissedKPI]) -> list[Rules]:
     # https://cloud.google.com/python/docs/reference/discoveryengine/latest/google.cloud.discoveryengine_v1.types.SearchRequest
     request = discoveryengine.SearchRequest(
         serving_config=serving_config,
-        query="",  # in this demo we only use the filters to get the list of rules.
+        query="",
+        # in this demo we only use the filters to get the list of rules.
         page_size=10,
         query_expansion_spec=discoveryengine.SearchRequest.QueryExpansionSpec(
             condition=discoveryengine.SearchRequest.QueryExpansionSpec.Condition.AUTO,

@@ -66,5 +66,7 @@ The report should contain the following sections:
 8. List of references from the internal and external search results. Present the references as Markdown link tags. Use "url" and "title" values of the reference as the title and the URL of the tag.
 
 You MUST generate all the sections of the report. If there is nothing to state in a particular section, still include it and indicate that there is no relevant information.
-    '''
+    ''',
+        planner=settings.planner,
+        generate_content_config=settings.content_config
     )

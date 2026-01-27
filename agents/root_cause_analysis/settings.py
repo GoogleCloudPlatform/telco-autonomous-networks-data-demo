@@ -11,10 +11,13 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
+from typing import Self, Optional
+
+from google.adk.planners import BuiltInPlanner
 from google.api_core.client_info import ClientInfo
+from google.genai.types import GenerateContentConfig, ThinkingConfig
 from pydantic import model_validator, Field
 from pydantic_settings import BaseSettings
-from typing import Self, Optional
 
 
 class AgentSettings(BaseSettings):
@@ -24,6 +27,7 @@ class AgentSettings(BaseSettings):
     incident_retriever_model: str = 'gemini-2.5-flash'
     prior_incidents_searcher_model: Optional[str] = None
     report_generator_model: Optional[str] = None
+    agent_executor_model: Optional[str] = None
     instruction_generator_model: Optional[str] = None
     analyzer_model: Optional[str] = None
     root_agent_model: Optional[str] = None
@@ -62,6 +66,9 @@ class AgentSettings(BaseSettings):
 
     confirm_each_step: bool = False
 
+    content_config: Optional[GenerateContentConfig] = None
+    planner: Optional[BuiltInPlanner] = None
+
     @model_validator(mode='after')
     def set_defaults(self) -> Self:
         if not self.external_doc_retriever_model:
@@ -80,6 +87,17 @@ class AgentSettings(BaseSettings):
             self.analyzer_model = self.default_model
         if not self.root_agent_model:
             self.root_agent_model = self.default_model
+        if not self.agent_executor_model:
+            self.agent_executor_model = self.default_model
+
+        if not self.content_config:
+            self.content_config = GenerateContentConfig(
+                labels={"agent": "rca"})
+
+        if not self.planner:
+            self.planner = BuiltInPlanner(
+                thinking_config=ThinkingConfig(
+                    include_thoughts=self.show_thoughts))
 
         return self
 

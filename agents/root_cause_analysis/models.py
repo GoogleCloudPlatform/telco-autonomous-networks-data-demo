@@ -12,8 +12,10 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-from pydantic import BaseModel, Field, model_validator
 from typing import Optional, Set, Self
+
+from pydantic import BaseModel, Field, model_validator
+
 
 class CellTracesStats(BaseModel):
     connection_outcome: Optional[str]
@@ -25,12 +27,14 @@ class CellTracesStats(BaseModel):
             self.connection_outcome = 'OTHER'
         return self
 
+
 class MissedKPI(BaseModel):
     kpi: str = Field('KPI ID')
     value: float = Field("Value of the KPI")
 
     def to_descriptive_string(self) -> str:
         return f"{self.kpi} (value={self.value})"
+
 
 class Incident(BaseModel):
     id: str = Field("Unique incident id")
@@ -43,19 +47,24 @@ class Incident(BaseModel):
     start_time: str = Field("Start time of the incident")
     end_time: Optional[str] = Field("End time of the incident")
 
+
 class Document(BaseModel):
     url: str
     title: str
 
+
 class ExternalSearchResult(BaseModel):
     search_results: str = Field(description="Results of the search")
-    references: list[Document] = Field(description="References used in grounding")
+    references: list[Document] = Field(
+        description="References used in grounding")
 
 
 class InternalSearchResult(BaseModel):
     queries: list[str] = Field(description="Queries used to search")
     search_result: str = Field(description="Results of an internal search")
-    references: list[Document] = Field(description="References used in grounding")
+    references: list[Document] = Field(
+        description="References used in grounding")
+
 
 class Rules(BaseModel):
     processing_rule: str
@@ -64,3 +73,9 @@ class Rules(BaseModel):
     severity_determination_rule_tools: Set[str]
     source_document: str
 
+
+class Action(BaseModel):
+    tool_name: str = Field(description="Name of the tool to execute the action")
+    reason_to_perform: str = Field(description="Reason to perform this action")
+    parameters: Optional[dict] = Field(description="Optional parameters")
+    status: str = Field(description="Status of the action", default="SUGGESTED")

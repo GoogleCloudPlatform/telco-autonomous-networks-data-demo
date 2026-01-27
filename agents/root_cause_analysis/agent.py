@@ -15,12 +15,12 @@ from google.adk import Agent
 from google.adk.apps import App
 from google.adk.models import Gemini
 from google.adk.planners import BuiltInPlanner
-from google.adk.plugins.bigquery_agent_analytics_plugin import \
-    BigQueryAgentAnalyticsPlugin
 from google.adk.tools import AgentTool
 from google.genai.types import ThinkingConfig
 
 from root_cause_analysis.settings import settings
+from root_cause_analysis.subagents.action_executor.agent import \
+    build_action_executor
 from root_cause_analysis.subagents.analyzer.agent import build_analyzer_agent
 from root_cause_analysis.subagents.external_documentation_searcher.agent import \
     build_external_documentation_retriever
@@ -51,6 +51,7 @@ instruction_generator = build_instruction_generator_agent()
 analyzer = build_analyzer_agent()
 rules_retriever = build_rules_retriever_agent()
 severity_classifier = build_severity_classifier_agent()
+action_performer = build_action_executor()
 
 how_to_proceed_before_each_step = \
     "Show what the next step is and confirm before proceeding." \
@@ -75,13 +76,14 @@ root_agent = Agent(
     4. Determine the severity level of the incident. Don't provide any additional information about the incident because the tool has access to all the data needed.
     5. Retrieve external and internal documentation related to the incident.
     6. Search for prior incidents similar to the one being analyzed.
-    7. Generate the final report by using the report_generator_agent tool.
+    7. Review and perform any suggested actions
+    8. Generate the final report by using the report_generator_agent tool.
     
     Finally, display the report. Ask the user if they want to update the incident with this report.
     
     {how_to_proceed_before_each_step}
     """,
-    sub_agents=[analyzer, severity_classifier],
+    sub_agents=[analyzer, severity_classifier, action_performer],
     tools=[
         get_incident_info,
         AgentTool(agent=rules_retriever),

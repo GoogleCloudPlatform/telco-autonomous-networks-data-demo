@@ -14,9 +14,7 @@
 
 from google.adk import Agent
 from google.adk.models import Gemini
-from google.adk.planners import BuiltInPlanner
 from google.adk.tools import ToolContext
-from google.genai.types import ThinkingConfig, GenerateContentConfig
 
 from root_cause_analysis.constants import KEY_INSTRUCTIONS, \
     KEY_PROCESSING_RULES
@@ -45,11 +43,7 @@ def build_instruction_generator_agent():
         Call the receive_instructions tool with the generated instructions. 
         At the end, simply state the instructions were successfully generated.
         """,
-        generate_content_config=GenerateContentConfig(
-            labels={"agent": "rca"},
-        ),
         tools=[receive_instructions],
-        planner=BuiltInPlanner(
-            thinking_config=ThinkingConfig(
-                include_thoughts=settings.show_thoughts))
+        planner=settings.planner,
+        generate_content_config=settings.content_config
     )
