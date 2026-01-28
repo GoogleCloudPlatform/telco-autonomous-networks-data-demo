@@ -1,12 +1,17 @@
 # Anomaly Detection and Root Cause Analysis in Telco Autonomous Network Operation
 
-This project shows how an LLM-based agent can proactively detect anomalies, perform root cause analysis (RCA) of incidents in
+This project shows how an LLM-based agent can proactively detect anomalies, perform root cause
+analysis (RCA) of incidents in
 telecommunication networks and suggest remedial actions.
 
-We thank DigitalRoute (https://www.digitalroute.com/) for providing us with synthesized, realistic eNodeB performance management (PM) data and cell traces and sharing their insights into common radio access network (RAN) and User Equipment (UE) issues with us.
+We thank DigitalRoute (https://www.digitalroute.com/) for providing us with synthesized, realistic
+eNodeB performance management (PM) data and cell traces and sharing their insights into common radio
+access network (RAN) and User Equipment (UE) issues with us.
 
 # Costs
-This demo uses several billable components of  Google Cloud. You can file pricing information in the links below:
+
+This demo uses several billable components of Google Cloud. You can file pricing information in the
+links below:
 
 - [BigQuery](https://cloud.google.com/bigquery/pricing)
 - [Vertex AI](https://cloud.google.com/vertex-ai/pricing)
@@ -33,30 +38,30 @@ You need to have access to a Google Cloud project with an active billing account
 3. Create `infrastructure/project-setup/terraform.tfvars` file with
    the following content:
 
-```text
-project_id = "<your project id>"
-```
+    ```text
+    project_id = "<your project id>"
+    ```
 
 4. Run Terraform scripts which will enable required APIs for this project
 
-```shell
-cd infrastructure/project-setup
-terraform init 
-terraform apply
-```
+    ```shell
+    cd infrastructure/project-setup
+    terraform init 
+    terraform apply
+    ```
 
 5. Create `infrastructure/terraform/terraform.tfvars` file with
    the following content:
 
-```text
-project_id = "<your project id>"
-bigquery_data_project_id = "<project where BigQuery dataset will be created>"
-```
+    ```text
+    project_id = "<your project id>"
+    bigquery_data_project_id = "<project where BigQuery dataset will be created>"
+    ```
 
-There are additional variables that can be provided in that file to further customize the
-deployment.
-Please check [infrastructure/terraform/variables.tf](infrastructure/terraform/variables.tf) for
-detail.
+   There are additional variables that can be provided in that file to further customize the
+   deployment.
+   Please check [infrastructure/terraform/variables.tf](infrastructure/terraform/variables.tf) for
+   detail.
 
 6. Create infrastructure to run the demo:
 
@@ -142,12 +147,13 @@ point where the last search finished.
 
 In the web UI, switch the agent to the `root_cause_analysis` one.
 
-Type a prompt like this: "Analyse incident <incident id>". The agent process the incident and
-generate a report similar to this one:
+Type a prompt like this: "Analyse incident xxx" and replace "xxx" with the id of the incident. The
+agent processes the incident and generates a report similar to this one:
 
 ![sample report](docs/sample-rca.png)
 
 # Cleanup
+
 If you created the infrastructure in a dedicated project you can just delete this project.
 
 Otherwise, you can run the following script:
