@@ -16,6 +16,7 @@ from typing import Optional
 from google.adk import Agent
 from google.adk.agents.callback_context import CallbackContext
 from google.genai import types
+from google.genai.types import FunctionCall
 
 from root_cause_analysis.constants import KEY_ACTIONS
 from root_cause_analysis.settings import settings
@@ -23,12 +24,15 @@ from root_cause_analysis.tools.analysis_tools import automatic_action_toolset
 
 
 async def check_if_there_are_actions(callback_context: CallbackContext) -> \
-    Optional[types.Content]:
+        Optional[types.Content]:
     if not KEY_ACTIONS in callback_context.state:
         return types.Content(
             role="model",
-            parts=[types.Part(
-                text="There are no suggested automated actions to be taken.")],
+            parts=[
+                types.Part(text="There are no suggested automated actions to be taken."),
+                types.Part(
+                    function_call=FunctionCall(name="transfer_to_agent", args={"agent_name": settings.root_agent_name}))
+            ],
         )
     return None
 

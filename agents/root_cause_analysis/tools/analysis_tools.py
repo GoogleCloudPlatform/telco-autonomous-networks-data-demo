@@ -79,7 +79,7 @@ async def get_cell_trace_statistics(tool_context: ToolContext) -> list[
 
     logger.info("Cell trace statistics successfully retrieved: %s", str(result))
 
-    return {'status': 'Success', 'cell_trace_statistics': result}
+    return {'status': 'Success' if result else 'No cell traces found', 'cell_trace_statistics': result}
 
 
 async def get_uplink_rssi_level(tool_context: ToolContext, enodeb_id: str,
